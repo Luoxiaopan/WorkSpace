@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jquery随机抽奖 - 站长素材</title>
+	<head>
+	<script id="jquery_172" type="text/javascript" class="library" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+
+	$(function(){
+
+		var alldata = new Array("徐徐茵","逝去的kelly","我麋鹿拉_","咖啡仔在武汉","秋冬哥的胡歌哥","_JocelynChow","看你很烦","kayoyiiii","迪斯尼在纽约很想你","瘦瘦瘦不要肉肉肉","浅夏佴天","落大宝要上岸","柠檬树下的小羊","愿以百岁挽朝夕","吸猫狂人","blueakuma","涂涂要上岸","糯糯二呆酱","归_秋贝贝","一个鹅妹子","秋刀鱼的玆味_","流年以残断","无非一袭红尘似梦罢了","smile-大王","-CrystalYangzZ-","四场雨_","Soozzang","夏小懒不懒","跟疯少年i","小-兔-酱-","红鲤鱼与鲤鱼驴","我是小奶奶咯","化身孤岛的i鲸","香蕉大大爱峰峰Joye","_爱吃肉的小黄呀","-面包和湯和貓咪a","我是顾宝宝","遐屿","王大大来辣","依然小金子","yuni不吃珍珠","小清新不懵懂","zy花未开全月未圆","山醴","陈信宏陈杏红臣姓洪","ZOU走_","夏未至Jane","西瓜味芝麻糖zzz","想改名字却母鸡叫啥","陈抽抽要工作啦","三根肥牛","尔玉尔玉呀","山河入梦_","入江种花","一日两三餐","一只橙子柚","小小小小可李","五月天里的TOP","十二月晴朗Lee","今天少女切瓜了吗_yaoooooo");
+		var num = alldata.length - 1;
+		var show = $("#show");
+		var btn = $("#btn");
+		var open = false;
+
+		function change(){
+			var randomVal = Math.round(Math.random() * num);
+			var prizeName = alldata[randomVal];
+			show.text(prizeName);
+		}
+
+		function run(){
+			if(!open){
+				timer=setInterval(change,30);
+				btn.removeClass('start').addClass('stop').text('停止');
+				open = true;
+			}else{
+				clearInterval(timer);
+				btn.removeClass('stop').addClass('start').text('开始抽奖');
+				open = false;
+			}
+		}
+
+		btn.click(function(){run();})
+
+	})
+
+	</script>
+	<style>
+	body{ background:#fff;}
+	.wrap{ width:300px; margin:100px auto; font-family:"微软雅黑";}
+	.show{ width:300px; height:300px; background-color:#ff3300; line-height:300px; text-align:center; color:#fff; font-size:28px; -moz-border-radius:150px; -webkit-border-radius:150px; border-radius:150px; background-image: -webkit-gradient(linear,0% 0%, 0% 100%, from(#FF9600), to(#F84000), color-stop(0.5,#fb6c00)); -moz-box-shadow:2px 2px 10px #BBBBBB; -webkit-box-shadow:2px 2px 10px #BBBBBB; box-shadow:2px 2px 10px #BBBBBB;}
+	.btn a{ display:block; width:120px; height:50px; margin:30px auto; text-align:center; line-height:50px; text-decoration:none; color:#fff; -moz-border-radius:25px; -webkit-border-radius:25px; border-radius:25px;}
+	.btn a.start{ background:#80b600;}
+	.btn a.start:hover{ background:#75a700;}
+	.btn a.stop{ background:#00a2ff;}
+	.btn a.stop:hover{ background:#008bdb;}
+	</style>
+
+	</head>
+
+	<body>
+	<div class="wrap">
+		<div class="show" id="show">点击按钮开始抽奖</div>
+		<div class="btn">
+			<a href="javascript:void(0)" class="start" id="btn">开始抽奖</a>
+		</div>
+	</div>
+<div style="text-align:center;clear:both">
+<p>徐茵茵抽奖小软件</p>
+
+</div>
+	</body>
+</html>
