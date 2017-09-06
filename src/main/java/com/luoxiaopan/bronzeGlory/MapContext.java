@@ -9,10 +9,10 @@ import java.util.*;
 public class MapContext
 {
 
-    private ConnectMapInfo[][] mapContext = null;
+    private static ConnectMapInfo[][] mapContext = null;
 
     //区域列表
-    private Map<Integer,MapRegion> allRegion = new HashMap<Integer, MapRegion>();
+    private static Map<Integer,MapRegion> allRegion = new HashMap<Integer, MapRegion>();
 
     void initMapContext()
     {
@@ -112,7 +112,7 @@ public class MapContext
         this.mapContext = mapContext;
     }
 
-    public Map<Integer, MapRegion> getAllRegion()
+    public static Map<Integer, MapRegion> getAllRegion()
     {
         return allRegion;
     }
@@ -196,8 +196,12 @@ public class MapContext
         return distanceGraph;
     }
 
-    public List<Integer> getPath(int[][] distanceGraph,int startNo,int endNo)
+    public static List<Integer> getPath(int[][] distanceGraph,int startNo,int endNo)
     {
+        if (distanceGraph[startNo][endNo] == Integer.MAX_VALUE)
+        {
+            return null;
+        }
         Stack<Integer> path = new Stack<>();
         path.push(endNo);
         while (true)
