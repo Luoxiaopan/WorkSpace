@@ -12,7 +12,7 @@ import java.util.concurrent.Callable;
 public class MulitPointShortestPathTask
 {
 
-    public void call()
+    public List<ConnectMapInfo> call()
     {
         ConnectMapInfo startNode = new ConnectMapInfo();
         List<List<ConnectMapInfo>> combineElementsList = new CombinationElement(null).combineElement();
@@ -22,6 +22,8 @@ public class MulitPointShortestPathTask
             connectMapInfos.add(0,startNode);
             new SingleTask(connectMapInfos);
         }
+
+        return new new ArrayList<ConnectMapInfo>();
     }
 
     // a--->b--->c--->d的最短路径
